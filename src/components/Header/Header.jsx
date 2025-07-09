@@ -12,6 +12,8 @@ import "./Header.scss";
 
 const Header = () => {
     const [scrolled, setScrolled] = useState(false);
+    const [showCart, setShowCart] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
 
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -32,6 +34,7 @@ const Header = () => {
     }, []);
 
     return (
+        <>
         <header className={`main-header ${scrolled ? "sticky-header" : ""}`}>
             <div className="header-content">
                 <ul className="left">
@@ -41,15 +44,18 @@ const Header = () => {
                 </ul>
                 <div className="center">MyZenmart</div>
                 <div className="right">
-                    <TbSearch />
+                    <TbSearch  onClick={() => setShowSearch(true)}/>
                     <AiOutlineHeart />
-                    <span className="cart-icon">
+                    <span className="cart-icon" onClick={()=> setShowCart (true)}>
                         <CgShoppingCart />
                         <span>5</span>
                     </span>
                 </div>
             </div>
         </header>
+        {showCart && <Cart setShowCart = {setShowCart}/>}
+        {showSearch && <Search setShowSearch={setShowSearch}/>}
+        </>
     );
 };
 

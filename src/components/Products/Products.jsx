@@ -2,9 +2,9 @@ import "./Products.scss";
 import Product from "./Product/Product"
 import React from 'react'
 
-const Products = ({innerpage}) =>{
+const Products = ({innerpage,headingText}) =>{
     return <div className="products-container">
-        {innerpage && <div className="sec-heading"></div>}
+        {!innerpage && <div className="sec-heading">{headingText}</div>}
         <div className="products">
             <Product/>
             <Product/>
