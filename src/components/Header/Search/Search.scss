@@ -1,1 +1,108 @@
 @import "../../../css-config/mixins.scss";
+
+.search-model {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  background-color: white;
+  animation: slideSearchWindow 0.5s ease forwards;
+
+  .form-field {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    input {
+      width: 100%;
+      max-width: 800px;
+      height: 50px;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      color: #212121;
+      border: 1px solid #ccc;
+      outline: none;
+      text-transform: uppercase;
+    }
+
+    svg {
+      position: absolute;
+      font-size: 30px;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  }
+
+  .search-result-content {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+
+    .search-result {
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+
+      .search-result-item {
+        display: flex;
+        align-items: center; 
+        gap: 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+
+        .img-container {
+          width: 60px;
+          height: 60px;
+          background-color: rgba(0, 0, 0, 0.05);
+          flex-shrink: 0;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .pro-details {
+          display: flex;
+          flex-direction: column;
+          justify-content: center; 
+          height: 100%;
+
+          .name {
+            font-size: 16px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .desc {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideSearchWindow {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

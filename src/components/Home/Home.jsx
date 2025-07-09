@@ -10,7 +10,7 @@ const Home = () => {
             <div className="layout">
                <Category/>
                <Products headingText = "Popular Produts"/>
-               <Products/>
+               
             </div>
         </div>
         
