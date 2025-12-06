@@ -18,7 +18,7 @@ const Home = () => {
     }, []);
 
     const getProducts = () => {
-        fetchDataFromApi("/api/products?populate=*")
+        fetchDataFromApi("/api/categories?populate=*&locale=all")
             .then((res) => {
                 console.log(res)
         setProducts(res);
