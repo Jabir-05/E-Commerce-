@@ -1,15 +1,16 @@
-import axios from "axios";
-
-const api = axios.create({
-    baseURL: "http://localhost:1337",
-});
+import { STRAPI_BASE_URL } from "./constants";
 
 export const fetchDataFromApi = async (endpoint) => {
-    try {
-        const { data } = await api.get(`/api${endpoint}`);
-        return data;
-    } catch (error) {
-        console.error("API ERROR:", error);
-        throw error;
+  try {
+    const res = await fetch(`${STRAPI_BASE_URL}/api${endpoint}`);
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch ${endpoint}`);
     }
+
+    return await res.json();
+  } catch (err) {
+    console.error("API ERROR:", err.message);
+    throw err;
+  }
 };
